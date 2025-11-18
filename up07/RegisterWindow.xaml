@@ -1,0 +1,147 @@
+﻿<Window x:Class="up07.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:up07"
+        mc:Ignorable="d"
+        Title="Регистрация пациента" Height="650" Width="500">
+    <Grid Background="#f5f5f5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Заголовок-->
+        <Border Grid.Row="0" Background="#4caf50">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Регистрация пациента"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+        
+        <!--форма регистрации-->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Border Background="White"
+                    CornerRadius="10"
+                    Margin="30 20 30 30">
+                <StackPanel Margin="40 30">
+                    <!--ФИО-->
+                    <TextBlock Text="ФИО:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <TextBox x:Name="FIOTextBox" Height="35" FontSize="14" Padding="10 8"
+                             BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12"/>
+                    
+                    <!--Дата рождения-->
+                    <TextBlock Text="Дата рождения:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <DatePicker x:Name="BirthDatePicker" Height="35" FontSize="14"
+                                BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12"/>
+                    
+                    <!--Пол-->
+                    <TextBlock Text="Пол:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <ComboBox x:Name="GenderComboBox" Height="35" FontSize="14"
+                              BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12">
+                        <ComboBoxItem Content="М"/>
+                        <ComboBoxItem Content="Ж"/>
+                    </ComboBox>
+                    
+                    <!--СНИЛС-->
+                    <TextBlock Text="СНИЛС:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <TextBox x:Name="SNILSTextBox" Height="35" FontSize="14" Padding="10 8"
+                            BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12"/>
+                    
+                    <!--Полис ОМС-->
+                    <TextBlock Text="Полис ОМС:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <TextBox x:Name="OMSTextBox" Height="35" FontSize="14" Padding="10 8"
+                            BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12"/>
+                    
+                    <!--Адрес-->
+                    <TextBlock Text="Адрес:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <TextBox x:Name="AddressTextBox" Height="35" FontSize="14" Padding="10 8"
+                            BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12"/>
+                    
+                    <!--Телефон-->
+                    <TextBlock Text="Телефон:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <TextBox x:Name="PhoneTextBox" 
+                             Height="35" 
+                             FontSize="14" 
+                             Padding="10 8"
+                             BorderBrush="#bdbdbd" 
+                             BorderThickness="1" 
+                             Margin="0 0 0 12"
+                             MaxLength="18"
+                             PreviewTextInput="PhoneTextBox_PreviewTextInput"
+                             TextChanged="PhoneTextBox_TextChanged"/>
+                    
+                    <!--Логин-->
+                    <TextBlock Text="Логин:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <TextBox x:Name="LoginTextBox" Height="35" FontSize="14" Padding="10 8"
+                            BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12"/>
+                    
+                    <!--Пароль-->
+                    <TextBlock Text="Пароль:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <PasswordBox x:Name="PasswordBox" Height="35" FontSize="14" Padding="10 8"
+                            BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12"/>
+
+                    <!--Подтверждение пароля-->
+                    <TextBlock Text="Подтвержите пароль:" FontSize="14" Foreground="#555" Margin="0 0 0 5"/>
+                    <PasswordBox x:Name="ConfirmPasswordBox" Height="35" FontSize="14" Padding="10 8"
+                             BorderBrush="#bdbdbd" BorderThickness="1" Margin="0 0 0 12"/>
+
+                    <!--Кнопка регистрации-->
+                    <Button Content="Зарегистрироваться"
+                            Height="40"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Background="#4caf50"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="RegisterButton_Click"
+                            Margin="0 0 0 10">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    CornerRadius="5"
+                                                    Padding="5">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#45a049"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    
+                    <!--ссылка на вход-->
+                    <TextBlock HorizontalAlignment="Center" Margin="0 10 0 0">
+                        <Hyperlink Click="LoginLink_Click"
+                                   TextDecorations="None"
+                                   Foreground="#4caf50">
+                            <TextBlock Text="Уже есть аккаунт? Войти" FontSize="13"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+
+    <Window.Resources>
+        <DropShadowEffect x:Key="DropShadow"
+                          Color="#000000"
+                          Direction="270"
+                          ShadowDepth="2"
+                          BlurRadius="10"
+                          Opacity="0.15"/>
+    </Window.Resources>
+</Window>

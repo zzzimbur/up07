@@ -1,0 +1,116 @@
+﻿<Window x:Class="up07.DoctorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:up07"
+        mc:Ignorable="d"
+        Title="Панель врача" Height="700" Width="1100"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="#00BCD4">
+            <Grid>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
+                    <TextBlock Text="👨‍⚕️" FontSize="24" Foreground="White" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock x:Name="UserNameTextBlock" 
+                                   FontSize="18" 
+                                   FontWeight="SemiBold" 
+                                   Foreground="White"/>
+                        <TextBlock Text="Врач" 
+                                   FontSize="12" 
+                                   Foreground="#B2EBF2"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Content="Выход" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center"
+                        Margin="0,0,20,0"
+                        Width="100"
+                        Height="35"
+                        Background="#0097A7"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="LogoutButton_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Содержимое -->
+        <Grid Grid.Row="1" Margin="20">
+            <TabControl>
+                <!-- Вкладка: Мои пациенты -->
+                <TabItem Header="Мои пациенты">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" 
+                                Background="White" 
+                                CornerRadius="10">
+                            <DataGrid x:Name="PatientsDataGrid" 
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      SelectionMode="Single"
+                                      GridLinesVisibility="None"
+                                      HeadersVisibility="Column"
+                                      BorderThickness="0"
+                                      Background="White"
+                                      SelectionChanged="PatientsDataGrid_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding PatientId}" Width="60"/>
+                                    <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
+                                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate, StringFormat=dd.MM.yyyy}" Width="120"/>
+                                    <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="120"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+                        <Button Grid.Row="1" 
+                                Content="Открыть медицинскую карту" 
+                                Height="40" 
+                                Margin="0,15,0,0"
+                                Background="#00BCD4"
+                                Foreground="White"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="OpenMedicalCardButton_Click"/>
+                    </Grid>
+                </TabItem>
+
+                <!-- Вкладка: Записи на прием -->
+                <TabItem Header="Записи на прием">
+                    <Grid Margin="10">
+                        <Border Background="White" 
+                                CornerRadius="10">
+                            <DataGrid x:Name="AppointmentsDataGrid" 
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      GridLinesVisibility="None"
+                                      HeadersVisibility="Column"
+                                      BorderThickness="0"
+                                      Background="White">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding AppointmentId}" Width="60"/>
+                                    <DataGridTextColumn Header="Пациент" Binding="{Binding PatientName}" Width="*"/>
+                                    <DataGridTextColumn Header="Дата приема" Binding="{Binding AppointmentDate, StringFormat=dd.MM.yyyy HH:mm}" Width="150"/>
+                                    <DataGridTextColumn Header="Тип" Binding="{Binding Type}" Width="150"/>
+                                    <DataGridTextColumn Header="Диагноз" Binding="{Binding Diagnosis}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

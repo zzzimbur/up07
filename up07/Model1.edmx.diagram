@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6584836ec7d34314bef2fef4a8c7c4c8" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="up07Model.анализы" Width="1.5" PointX="11.125" PointY="7" />
+        <EntityTypeShape EntityType="up07Model.врачи" Width="1.5" PointX="5.875" PointY="1.5" />
+        <EntityTypeShape EntityType="up07Model.заведующие" Width="1.5" PointX="5.875" PointY="14.5" />
+        <EntityTypeShape EntityType="up07Model.медицинские_карты" Width="1.5" PointX="8.125" PointY="2.75" />
+        <EntityTypeShape EntityType="up07Model.отделения" Width="1.5" PointX="3.625" PointY="3.625" />
+        <EntityTypeShape EntityType="up07Model.пациенты" Width="1.5" PointX="5.875" PointY="6.625" />
+        <EntityTypeShape EntityType="up07Model.полиcа_ОМС" Width="1.5" PointX="8.625" PointY="7.125" />
+        <EntityTypeShape EntityType="up07Model.пользователи" Width="1.5" PointX="3.625" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="up07Model.приемы" Width="1.5" PointX="8.125" PointY="10.875" />
+        <EntityTypeShape EntityType="up07Model.рецепты" Width="1.5" PointX="10.375" PointY="3.125" />
+        <EntityTypeShape EntityType="up07Model.роли" Width="1.5" PointX="1.375" PointY="7.5" />
+        <EntityTypeShape EntityType="up07Model.специальности" Width="1.5" PointX="3.625" PointY="1.25" />
+        <EntityTypeShape EntityType="up07Model.страховые_компании" Width="1.5" PointX="5.875" PointY="11.375" />
+        <AssociationConnector Association="up07Model.FK__анализы__врач_ид__6B24EA82" ManuallyRouted="true" >
+          <ConnectorPoint PointX="7.375" PointY="2.09375" />
+          <ConnectorPoint PointX="7.909290625" PointY="2.09375" />
+          <ConnectorPoint PointX="7.909290625" PointY="1.481073871254921" />
+          <ConnectorPoint PointX="8.9940625" PointY="1.481073871254921" />
+          <ConnectorPoint PointX="8.9940625" PointY="0.27662044018507004" />
+          <ConnectorPoint PointX="12.28125" PointY="0.27662044018507004" />
+          <ConnectorPoint PointX="12.28125" PointY="7" />
+        </AssociationConnector>
+        <AssociationConnector Association="up07Model.FK__анализы__пациент__6A30C649" />
+        <AssociationConnector Association="up07Model.FK__врачи__отделение__5CD6CB2B" />
+        <AssociationConnector Association="up07Model.FK__врачи__специальн__5BE2A6F2" />
+        <AssociationConnector Association="up07Model.FK__медицинск__врач___6477ECF3" />
+        <AssociationConnector Association="up07Model.FK__приемы__врач_ид__60A75C0F" />
+        <AssociationConnector Association="up07Model.FK__заведующи__отдел__571DF1D5" />
+        <AssociationConnector Association="up07Model.FK__медицинск__пацие__6383C8BA" />
+        <AssociationConnector Association="up07Model.FK__рецепты__медицин__6754599E" />
+        <AssociationConnector Association="up07Model.FK__пациенты__пользо__5165187F" />
+        <AssociationConnector Association="up07Model.FK__полима_ОМ__пацие__6FE99F9F" />
+        <AssociationConnector Association="up07Model.FK__приемы__пациент___5FB337D6" />
+        <AssociationConnector Association="up07Model.FK__полима_ОМ__страх__70DDC3D8" />
+        <AssociationConnector Association="up07Model.FK__пользоват__роль___4E88ABD4" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
