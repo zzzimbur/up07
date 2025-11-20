@@ -41,7 +41,7 @@ namespace up07
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT врач_ид FROM врачи WHERE ФИО = @fio";
+                    string query = "SELECT врач_ид FROM врачи WHERE CONCAT_WS(' ', фамилия, имя, отчество) = @fio";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@fio", currentUser.FullName);
@@ -50,10 +50,19 @@ namespace up07
                         {
                             doctorId = (int)result;
                         }
+                        else 
+                        {
+                            MessageBox.Show("Не найден врач с таким полным именем в БД. Проверьте ФИО в currentUser.FullName.", "Предупреждение",
+                                            MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
                     }
                 }
             }
-            catch { }
+            catch(Exception ex) 
+            {
+                MessageBox.Show($"Ошибка загрузки ID врача: {ex.Message}", "Ошибка",
+                                            MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void LoadPatients()
@@ -85,7 +94,7 @@ namespace up07
                                     PatientId = reader.GetInt32(0),
                                     FullName = reader.GetString(1),
                                     BirthDate = reader.GetDateTime(2),
-                                    Phone = reader.GetInt32(3).ToString()
+                                    Phone = reader.IsDBNull(3) ? "" : reader.GetInt64(3).ToString()
                                 });
                             }
                         }
